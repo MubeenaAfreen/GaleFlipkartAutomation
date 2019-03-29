@@ -1,0 +1,44 @@
+package pageObjects;
+
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
+import org.openqa.selenium.support.PageFactory;
+
+public class SearchResultPage 
+{
+	WebDriver driver;
+	
+	@FindBy(css="div.t-0M7P._2doH3V div._3e7xtJ div._1HmYoV.hCUpcT:nth-child(1) div._1HmYoV._35HD7C:nth-child(1) div._1HmYoV._35HD7C.col-12-12 div.bhgxx2.col-12-12:nth-child(1) div._1YuAuf section._1MCcAi.D_NGuZ:nth-child(3) div._3Uy12X div._1qKb_B > select.fPjUPw")
+	WebElement priceFilter;
+	
+	
+	
+	public void selectByIndex(int index)
+	{
+		/*Actions actions = new Actions(driver);
+		actions.moveToElement(priceFilter);
+		actions.perform();*/
+	Select priceDropDown = new Select(priceFilter);
+	priceDropDown.selectByIndex(index);
+	}
+	
+	@FindBy(xpath="//div[contains(text(),'Samsung Galaxy On Nxt (Gold, 64 GB)')]")
+	WebElement firstResult;
+	
+	public WebElement getFirstResult()
+	{
+		return firstResult;
+	}
+	
+	
+	public SearchResultPage(WebDriver driver)
+	{
+		this.driver = driver;
+		PageFactory.initElements(driver, this);
+	}
+}
+ 

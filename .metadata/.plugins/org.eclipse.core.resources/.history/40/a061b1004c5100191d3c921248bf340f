@@ -1,0 +1,19 @@
+package pageObjects;
+
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
+import org.openqa.selenium.support.ui.Select;
+
+public class SearchResultPage 
+{
+	
+	@FindBy(xpath="//div[@class='_1qKb_B']")
+	WebElement priceFilter;
+	
+	public void selectByIndex(int index)
+	{
+	Select priceDropDown = new Select(priceFilter);
+	priceDropDown.selectByIndex(index);
+	}
+}
+ 
